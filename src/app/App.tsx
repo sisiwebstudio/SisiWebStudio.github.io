@@ -1,0 +1,42 @@
+import { Hero } from './components/Hero';
+import { About } from './components/About';
+import { Projects } from './components/Projects';
+import { Contact } from './components/Contact';
+import { Navigation } from './components/Navigation';
+import { HomePage } from './components/HomePage';
+import { Pricing } from './components/Pricing';
+import { ContactPage } from './components/ContactPage';
+import { ProjectDetail } from './components/ProjectDetail';
+import { useState } from 'react';
+
+export default function App() {
+  const [currentPage, setCurrentPage] = useState<'home' | 'pricing' | 'contact' | 'project'>('home');
+  const [selectedPackage, setSelectedPackage] = useState<string | undefined>(undefined);
+  const [selectedProjectId, setSelectedProjectId] = useState<number>(0);
+
+  const handleNavigate = (page: 'home' | 'pricing' | 'contact', packageName?: string) => {
+    setCurrentPage(page);
+    if (packageName) {
+      setSelectedPackage(packageName);
+    }
+  };
+
+  const handleProjectClick = (projectId: number) => {
+    setSelectedProjectId(projectId);
+    setCurrentPage('project');
+  };
+
+  const handleBackFromProject = () => {
+    setCurrentPage('home');
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
+      {currentPage === 'home' && <HomePage onProjectClick={handleProjectClick} />}
+      {currentPage === 'pricing' && <Pricing onSelectPackage={handleNavigate} />}
+      {currentPage === 'contact' && <ContactPage selectedPackage={selectedPackage} />}
+      {currentPage === 'project' && <ProjectDetail projectId={selectedProjectId} onBack={handleBackFromProject} />}
+    </div>
+  );
+}
