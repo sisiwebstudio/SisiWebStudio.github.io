@@ -10,5 +10,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/SisiWebStudio.github.io/',
+  base: '/SisiWebStudio/',
 })
