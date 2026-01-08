@@ -11,10 +11,4 @@ export default defineConfig({
     tailwindcss(),
   ],
   base: '/SisiWebStudio.github.io/',
-  resolve: {
-    alias: {
-      // Alias @ to the src directory
-      '@': path.resolve(__dirname, './src'),
-    },
-  },
 })
