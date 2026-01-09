@@ -12,60 +12,63 @@ export function Pricing({ onSelectPackage }: PricingProps) {
       price: '1 400 zł',
       color: 'from-emerald-500 to-green-500',
       icon: '🟢',
-      subtitle: 'Dla bardzo małych firm i usług lokalnych',
+      subtitle:
+        'Dla bardzo małych firm i usług lokalnych, które potrzebują solidnej obecności online',
       features: [
         '1 strona (one-page) lub do 3 sekcji',
         'wersja mobilna',
         'formularz kontaktowy',
-        'mapa Google',
-        'podstawowe SEO',
-        'wdrożenie i publikacja'
+        'podstawowa optymalizacja SEO',
+        'wdrożenie i publikacja',
       ],
       time: 'do 5 dni',
       revisions: '1 runda poprawek',
-      popular: false
+      popular: false,
     },
     {
       name: 'STANDARD',
       price: '2 000 zł',
       color: 'from-amber-500 to-orange-500',
       icon: '🟡',
-      subtitle: 'Najlepszy stosunek ceny do zakresu',
+      subtitle: 'Najlepszy balans między ceną, jakością i funkcjonalnością',
       features: [
         'do 5 podstron',
-        'responsywny design',
-        'formularz + CTA',
-        'podstawowe SEO',
-        'Google Analytics',
-        'krótka instrukcja obsługi'
+        'wersja mobilna',
+        'formularze kontaktowe',
+        'podstawowa optymalizacja SEO',
+        'mapy Google',
+        'prosta galeria zdjęć',
       ],
       time: 'do 7 dni',
       revisions: '2 rundy poprawek',
-      popular: true
+      popular: true,
     },
     {
       name: 'PLUS',
       price: '2 600 zł',
       color: 'from-blue-500 to-indigo-500',
       icon: '🔵',
-      subtitle: 'Dla firm, które chcą wyglądać solidnie',
+      subtitle: 'Dla firm, które chcą budować zaufanie i wyglądać profesjonalnie',
       features: [
         'do 8 podstron',
-        'lepsza optymalizacja szybkości',
-        'dodatkowe sekcje (FAQ, opinie)',
-        'pełne testy + wdrożenie'
+        'wersja mobilna',
+        'formularze kontaktowe',
+        'więcej interaktywnych elementów i animacji',
+        'optymalizacja SEO',
+        'galeria zdjęć',
+        'mapy Google + inne dodatki',
       ],
       time: 'do 10 dni',
       revisions: '3 rundy poprawek',
-      popular: false
-    }
+      popular: false,
+    },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-violet-50 via-purple-50 to-pink-50 pt-24 pb-20 px-6">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto mt-20">
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -83,13 +86,15 @@ export function Pricing({ onSelectPackage }: PricingProps) {
             </h1>
             <Sparkles className="w-6 h-6 text-pink-600" />
           </motion.div>
-          <motion.p 
+
+          <motion.p
             className="text-lg text-gray-700 max-w-2xl mx-auto mt-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Proste, przejrzyste ceny bez ukrytych kosztów. Wybierz pakiet dopasowany do potrzeb Twojej firmy! 💼
+            Jasne pakiety bez ukrytych kosztów. Każdy projekt realizuję indywidualnie, z
+            profesjonalnym podejściem programistycznym.
           </motion.p>
         </motion.div>
 
@@ -99,7 +104,7 @@ export function Pricing({ onSelectPackage }: PricingProps) {
             <motion.div
               key={index}
               className={`relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 ${
-                pkg.popular ? 'ring-2 ring-violet-600 scale-105 md:scale-110' : ''
+                pkg.popular ? 'ring-2 ring-violet-600' : ''
               }`}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -108,14 +113,14 @@ export function Pricing({ onSelectPackage }: PricingProps) {
             >
               {/* Popular Badge */}
               {pkg.popular && (
-                <motion.div 
+                <motion.div
                   className="absolute top-4 right-4 bg-gradient-to-r from-violet-600 to-purple-600 text-white px-3 py-1 rounded-full text-xs flex items-center gap-1 shadow-lg"
-                  initial={{ scale: 0, rotate: -180 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.4, delay: 0.4 }}
                 >
                   <Star className="w-3 h-3" />
-                  <span>Najpopularniejszy</span>
+                  <span>Najczęściej wybierany</span>
                 </motion.div>
               )}
 
@@ -130,14 +135,17 @@ export function Pricing({ onSelectPackage }: PricingProps) {
                   <div className="text-4xl mb-2">{pkg.icon}</div>
                   <h3 className="text-2xl text-white mb-2">Pakiet {pkg.name}</h3>
                   <p className="text-white/90 text-sm mb-4">{pkg.subtitle}</p>
-                  <div className="text-4xl text-white">
-                    {pkg.price}
-                  </div>
+                  <div className="text-4xl text-white">{pkg.price}</div>
                 </div>
               </div>
 
               {/* Features */}
               <div className="p-8">
+                <p className="text-sm text-gray-600 mb-4">
+                  Zakres prac dobrany tak, aby strona była czytelna, szybka i gotowa do pozyskiwania
+                  klientów.
+                </p>
+
                 <div className="mb-6">
                   <h4 className="text-sm uppercase text-gray-500 mb-4">W cenie:</h4>
                   <ul className="space-y-3">
@@ -160,18 +168,20 @@ export function Pricing({ onSelectPackage }: PricingProps) {
                 <div className="border-t border-gray-200 pt-6 space-y-3">
                   <div className="flex items-center gap-2 text-gray-600">
                     <Clock className="w-4 h-4 text-violet-600" />
-                    <span className="text-sm">⏱️ Termin: <strong>{pkg.time}</strong></span>
+                    <span className="text-sm">
+                      Termin realizacji: <strong>{pkg.time}</strong>
+                    </span>
                   </div>
                   <div className="flex items-center gap-2 text-gray-600">
                     <MessageSquare className="w-4 h-4 text-violet-600" />
-                    <span className="text-sm">💬 {pkg.revisions}</span>
+                    <span className="text-sm">{pkg.revisions}</span>
                   </div>
                 </div>
 
                 {/* CTA Button */}
                 <motion.button
                   onClick={() => onSelectPackage('contact', pkg.name)}
-                  className={`mt-8 w-full py-3 rounded-full text-center block transition-all cursor-pointer ${
+                  className={`mt-8 w-full py-3 rounded-full transition-all cursor-pointer ${
                     pkg.popular
                       ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg hover:shadow-xl'
                       : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
@@ -179,7 +189,7 @@ export function Pricing({ onSelectPackage }: PricingProps) {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Wybieram ten pakiet
+                  Zapytaj o ten pakiet
                 </motion.button>
               </div>
             </motion.div>
@@ -196,10 +206,19 @@ export function Pricing({ onSelectPackage }: PricingProps) {
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
             <h3 className="text-xl mb-4 text-gray-900">💡 Dodatkowe informacje</h3>
             <div className="text-gray-600 space-y-2 text-sm">
-              <p>✅ Wszystkie pakiety zawierają hosting na pierwszy miesiąc gratis</p>
-              <p>✅ Możliwość płatności w 2 ratach (50% przed rozpoczęciem, 50% po zakończeniu)</p>
-              <p>✅ Gwarancja wsparcia technicznego przez 30 dni po wdrożeniu</p>
-              <p>✅ Potrzebujesz czegoś innego? <button onClick={() => onSelectPackage('contact', 'INDYWIDUALNY')} className="text-violet-600 hover:underline cursor-pointer">Skontaktuj się</button> - stworzę ofertę na miarę!</p>
+              <p>✅ Hosting na pierwszy miesiąc gratis</p>
+              <p>✅ Płatność w 2 ratach (50% przed, 50% po zakończeniu)</p>
+              <p>✅ 30 dni wsparcia technicznego po wdrożeniu</p>
+              <p>
+                ✅ Potrzebujesz innego zakresu?{' '}
+                <button
+                  onClick={() => onSelectPackage('contact', 'INDYWIDUALNY')}
+                  className="text-violet-600 hover:underline cursor-pointer"
+                >
+                  Skontaktuj się
+                </button>{' '}
+                - przygotuję wycenę szytą na miarę
+              </p>
             </div>
           </div>
         </motion.div>

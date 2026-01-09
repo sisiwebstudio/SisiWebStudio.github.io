@@ -1,7 +1,3 @@
-import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { Projects } from './components/Projects';
-import { Contact } from './components/Contact';
 import { Navigation } from './components/Navigation';
 import { HomePage } from './components/HomePage';
 import { Pricing } from './components/Pricing';
@@ -10,7 +6,9 @@ import { ProjectDetail } from './components/ProjectDetail';
 import { useState } from 'react';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'pricing' | 'contact' | 'project'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'pricing' | 'contact' | 'project'>(
+    'home'
+  );
   const [selectedPackage, setSelectedPackage] = useState<string | undefined>(undefined);
   const [selectedProjectId, setSelectedProjectId] = useState<number>(0);
 
@@ -32,11 +30,16 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
+      <Navigation
+        currentPage={currentPage === 'project' ? 'home' : currentPage}
+        onNavigate={handleNavigate}
+      />
       {currentPage === 'home' && <HomePage onProjectClick={handleProjectClick} />}
       {currentPage === 'pricing' && <Pricing onSelectPackage={handleNavigate} />}
       {currentPage === 'contact' && <ContactPage selectedPackage={selectedPackage} />}
-      {currentPage === 'project' && <ProjectDetail projectId={selectedProjectId} onBack={handleBackFromProject} />}
+      {currentPage === 'project' && (
+        <ProjectDetail projectId={selectedProjectId} onBack={handleBackFromProject} />
+      )}
     </div>
   );
 }

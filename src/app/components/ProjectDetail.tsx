@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ArrowLeft, ExternalLink, Calendar, Tag } from 'lucide-react';
+import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 interface ProjectDetailProps {
@@ -11,61 +11,60 @@ export function ProjectDetail({ projectId, onBack }: ProjectDetailProps) {
   const projectDetails = [
     {
       id: 0,
-      title: 'Kawiarnia "Słoneczna"',
-      subtitle: 'Strona internetowa dla lokalnej kawiarni',
-      description: 'Kawiarnia "Słoneczna" to przytulne miejsce w centrum miasta, które potrzebowało nowoczesnej strony internetowej. Celem było stworzenie ciepłej, przyjaznej przestrzeni online, która odzwierciedla atmosferę kawiarni i ułatwia klientom zapoznanie się z ofertą.',
-      screenshot: 'https://images.unsplash.com/photo-1745211212450-92eca26775ba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYWZlJTIwcmVzdGF1cmFudCUyMHdlYnNpdGV8ZW58MXx8fHwxNzY3ODY5NjcxfDA&ixlib=rb-4.1.0&q=80&w=1080',
+      title: 'Portfolio fotografki ślubnej',
+      description:
+        'Anna Kowalska to profesjonalna fotografka ślubna z pasją do uwieczniania najważniejszych chwil. Potrzebowała eleganckiej strony portfolio, która prezentuje jej unikalny styl i pomaga parom młodym poznać jej twórczość przed podjęciem decyzji o współpracy.',
+      screenshot: '/wedding-photographer.png',
+      liveUrl: 'https://lofiwebstudio.github.io/wedding-photos-portfolio/',
       features: [
-        'Interaktywne menu z cenami i zdjęciami',
-        'System rezerwacji stolików online',
-        'Galeria zdjęć z atmosferą kawiarni',
-        'Mapa dojazdu i godziny otwarcia',
-        'Integracja z social media',
-        'Responsywny design na wszystkie urządzenia'
+        'Galeria zdjęć z podziałem na sesje i kategorie',
+        'Formularz kontaktowy z wyborem pakietu',
+        'Prezentacja pakietów i cennika',
+        'O mnie - historia i filozofia pracy',
+        'Referencje i opinie zadowolonych par',
+        'Blog z poradami dla par młodych',
       ],
-      technologies: ['React', 'Tailwind CSS', 'Google Maps API', 'Rezerwacje Online'],
-      gradient: 'from-amber-500 to-orange-500',
-      date: 'Listopad 2025',
-      duration: '5 dni'
+      technologies: ['React', 'Tailwind CSS', 'Galeria zdjęć', 'Responsywny design'],
+      gradient: 'from-amber-100 to-orange-200',
     },
     {
       id: 1,
-      title: 'Piekarnia "Babci Marysi"',
-      subtitle: 'Sklep internetowy z tradycyjnym pieczywem',
-      description: 'Piekarnia "Babci Marysi" to rodzinny biznes z 30-letnią tradycją. Właściciele chcieli rozszerzyć sprzedaż o kanał online, umożliwiając klientom zamawianie świeżego pieczywa i ciast z dostawą do domu.',
-      screenshot: 'https://images.unsplash.com/photo-1642333328966-f248191ff0da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWtlcnklMjBwYXN0cnklMjB3ZWJzaXRlfGVufDF8fHx8MTc2Nzg2OTY3MXww&ixlib=rb-4.1.0&q=80&w=1080',
+      title: 'Trener Personalny - Fitness & Zdrowie',
+      subtitle: 'Platforma dla trenera personalnego',
+      description:
+        'Profesjonalny trener personalny potrzebował nowoczesnej strony internetowej, która pomoże mu dotrzeć do nowych klientów i zarządzać treningami. Strona łączy w sobie prezentację usług, system rezerwacji treningów online oraz motywujący blog z poradami fitness.',
+      screenshot: '/trener.png',
+      liveUrl: 'https://lofiwebstudio.github.io/trener-personalny',
       features: [
-        'Katalog produktów z możliwością filtrowania',
-        'Koszyk zakupowy i płatności online',
-        'System zarządzania zamówieniami',
-        'Kalkulator kosztów dostawy',
-        'Newsletter z cotygodniowymi promocjami',
-        'Panel administracyjny dla właściciela'
+        'Prezentacja usług i pakietów treningowych',
+        'System rezerwacji treningów online',
+        'Kalkulatory BMI, kalorii i makroskładników',
+        'Galeria transformacji klientów',
+        'Blog z poradami treningowymi i żywieniowymi',
+        'Formularze kontaktowe i konsultacyjne',
       ],
-      technologies: ['E-commerce', 'Stripe Payments', 'CMS', 'Email Marketing'],
-      gradient: 'from-pink-500 to-rose-500',
-      date: 'Grudzień 2025',
-      duration: '7 dni'
+      technologies: ['React', 'Booking System', 'Kalkulatory zdrowia', 'Blog CMS'],
+      gradient: 'from-green-500 to-emerald-500',
     },
     {
       id: 2,
-      title: 'Studio Jogi "Harmonia"',
-      subtitle: 'Portal wellness z zapisami na zajęcia',
-      description: 'Studio Jogi "Harmonia" oferuje różnorodne zajęcia z jogi, medytacji i pilatesu. Potrzebowali platformy, która ułatwi klientom przeglądanie grafiku, zapisywanie się na zajęcia oraz dostęp do materiałów edukacyjnych.',
-      screenshot: 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b2dhJTIwc3R1ZGlvJTIwd2VsbG5lc3N8ZW58MXx8fHwxNzY3ODY5NjcyfDA&ixlib=rb-4.1.0&q=80&w=1080',
+      title: 'Korepetycje online z języka angielskiego',
+      subtitle: 'Strona internetowa dla nauczyciela języka angielskiego',
+      description:
+        'Projekt został stworzony dla doświadczonego nauczyciela języka angielskiego, który potrzebował nowoczesnej i przejrzystej strony internetowej wspierającej pozyskiwanie uczniów oraz kontakt z rodzicami. Strona w czytelny sposób prezentuje ofertę, doświadczenie oraz umożliwia szybkie sprawdzenie dostępności i rezerwację zajęć.',
+      screenshot: '/korepetytor.png',
+      liveUrl: 'https://lofiwebstudio.github.io/korepetytor/',
       features: [
-        'Interaktywny kalendarz zajęć',
-        'System zapisów i płatności za karnety',
-        'Profile instruktorów z ich specjalizacjami',
-        'Blog ze zdrowymi przepisami i poradami',
-        'Galeria wideo z krótkimi sesjami jogi',
-        'Panel klienta z historią zapisów'
+        'Prezentacja doświadczenia i kwalifikacji nauczyciela',
+        'Rezerwacja terminów korepetycji online',
+        'Cennik z elastycznymi pakietami zajęć',
+        'Opinie i rekomendacje uczniów',
+        'Blog z poradami oraz materiałami do nauki',
+        'Formularz kontaktowy dla uczniów i rodziców',
       ],
-      technologies: ['React', 'Calendar API', 'Video Streaming', 'Blog CMS'],
-      gradient: 'from-violet-500 to-purple-500',
-      date: 'Styczeń 2026',
-      duration: '8 dni'
-    }
+      technologies: ['React', 'System rezerwacji', 'CMS blogowy', 'Responsywny design'],
+      gradient: 'from-indigo-500 to-blue-500',
+    },
   ];
 
   const project = projectDetails[projectId];
@@ -103,22 +102,11 @@ export function ProjectDetail({ projectId, onBack }: ProjectDetailProps) {
           </motion.div>
           <h1 className="text-4xl md:text-6xl mb-4 text-gray-900">{project.title}</h1>
           <p className="text-xl text-gray-600 mb-6">{project.subtitle}</p>
-          
-          <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-            <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-violet-600" />
-              <span>{project.date}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Tag className="w-4 h-4 text-violet-600" />
-              <span>Czas realizacji: {project.duration}</span>
-            </div>
-          </div>
         </motion.div>
 
         {/* Screenshot */}
         <motion.div
-          className="mb-12 rounded-2xl overflow-hidden shadow-2xl"
+          className="mb-8 rounded-2xl overflow-hidden shadow-2xl"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -137,6 +125,28 @@ export function ProjectDetail({ projectId, onBack }: ProjectDetailProps) {
             />
           </div>
         </motion.div>
+
+        {/* Live Demo Button */}
+        {project.liveUrl && (
+          <motion.div
+            className="mb-12 flex justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <motion.a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r ${project.gradient} text-white rounded-full hover:shadow-2xl transition-all text-lg shadow-lg`}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <ExternalLink className="w-5 h-5" />
+              <span>Zobacz demo live</span>
+            </motion.a>
+          </motion.div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Description */}
@@ -162,7 +172,9 @@ export function ProjectDetail({ projectId, onBack }: ProjectDetailProps) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
                   >
-                    <div className={`w-6 h-6 rounded-full bg-gradient-to-r ${project.gradient} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                    <div
+                      className={`w-6 h-6 rounded-full bg-gradient-to-r ${project.gradient} flex items-center justify-center flex-shrink-0 mt-0.5`}
+                    >
                       <span className="text-white text-xs">✓</span>
                     </div>
                     <span className="text-gray-700">{feature}</span>
@@ -188,7 +200,7 @@ export function ProjectDetail({ projectId, onBack }: ProjectDetailProps) {
                     className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.6 + index * 0.1, type: "spring" }}
+                    transition={{ delay: 0.6 + index * 0.1, type: 'spring' }}
                     whileHover={{ scale: 1.05 }}
                   >
                     {tech}
@@ -197,11 +209,15 @@ export function ProjectDetail({ projectId, onBack }: ProjectDetailProps) {
               </div>
             </div>
 
-            <div className={`bg-gradient-to-br ${project.gradient} rounded-2xl shadow-lg p-6 text-white`}>
+            <div
+              className={`bg-gradient-to-br ${project.gradient} rounded-2xl shadow-lg p-6 text-white`}
+            >
               <h3 className="text-lg mb-4">Zainteresowany podobnym projektem?</h3>
               <p className="text-white/90 text-sm mb-6">
-                Stworzę dla Twojej firmy profesjonalną stronę internetową dostosowaną do Twoich potrzeb.
+                Stworzę dla Twojej firmy profesjonalną stronę internetową dostosowaną do Twoich
+                potrzeb.
               </p>
+
               <motion.button
                 onClick={onBack}
                 className="w-full py-3 bg-white text-gray-900 rounded-full hover:bg-gray-100 transition-all flex items-center justify-center gap-2"
@@ -209,7 +225,6 @@ export function ProjectDetail({ projectId, onBack }: ProjectDetailProps) {
                 whileTap={{ scale: 0.95 }}
               >
                 <span>Zobacz cennik</span>
-                <ExternalLink className="w-4 h-4" />
               </motion.button>
             </div>
           </motion.div>

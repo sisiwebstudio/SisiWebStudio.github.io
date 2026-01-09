@@ -12,28 +12,76 @@ export function ContactPage({ selectedPackage }: ContactPageProps) {
     email: '',
     phone: '',
     package: selectedPackage || '',
-    message: ''
+    message: '',
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', package: selectedPackage || '', message: '' });
-    }, 3000);
+
+    try {
+      // Pobierz swój Access Key z Web3Forms:
+      // 1. Wejdź na https://web3forms.com/
+      // 2. Wpisz swój email: contact@lofiwebstudio.pl
+      // 3. Skopiuj Access Key z emaila i wklej poniżej
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: 'YOUR_ACCESS_KEY_HERE', // 👈 Wklej tutaj Access Key z emaila
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: `Nowe zapytanie z portfolio${formData.package ? ` - Pakiet: ${formData.package}` : ''}`,
+          message: `
+Imię i nazwisko: ${formData.name}
+Email: ${formData.email}
+Telefon: ${formData.phone || 'Nie podano'}
+Wybrany pakiet: ${formData.package || 'Nie wybrano'}
+
+Treść wiadomości:
+${formData.message}
+          `,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitted(true);
+        setTimeout(() => {
+          setSubmitted(false);
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            package: selectedPackage || '',
+            message: '',
+          });
+        }, 3000);
+      } else {
+        alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
+    }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-violet-50 via-purple-50 to-pink-50 pt-24 pb-20 px-6">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto mt-20">
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -51,7 +99,7 @@ export function ContactPage({ selectedPackage }: ContactPageProps) {
             </h1>
             <Mail className="w-6 h-6 text-pink-600" />
           </motion.div>
-          <motion.p 
+          <motion.p
             className="text-lg text-gray-700 max-w-2xl mx-auto mt-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -79,7 +127,7 @@ export function ContactPage({ selectedPackage }: ContactPageProps) {
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1, rotate: 360 }}
-                  transition={{ duration: 0.6, type: "spring" }}
+                  transition={{ duration: 0.6, type: 'spring' }}
                 >
                   <CheckCircle className="w-20 h-20 text-green-500 mb-4" />
                 </motion.div>
@@ -88,7 +136,7 @@ export function ContactPage({ selectedPackage }: ContactPageProps) {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                {selectedPackage && (
+                {formData.package && (
                   <motion.div
                     className="bg-gradient-to-r from-violet-100 to-purple-100 p-4 rounded-xl border border-violet-200"
                     initial={{ scale: 0.9, opacity: 0 }}
@@ -98,7 +146,7 @@ export function ContactPage({ selectedPackage }: ContactPageProps) {
                     <div className="flex items-center gap-2">
                       <Sparkles className="w-5 h-5 text-violet-600" />
                       <span className="text-sm text-violet-900">
-                        Wybrany pakiet: <strong>{selectedPackage}</strong>
+                        Wybrany pakiet: <strong>{formData.package}</strong>
                       </span>
                     </div>
                   </motion.div>
@@ -218,8 +266,11 @@ export function ContactPage({ selectedPackage }: ContactPageProps) {
                 </div>
                 <div>
                   <h3 className="text-lg mb-1 text-gray-900">Email</h3>
-                  <a href="mailto:alex@webstudio.pl" className="text-violet-600 hover:underline">
-                    alex@webstudio.pl
+                  <a
+                    href="mailto:contact@lofiwebstudio.pl"
+                    className="text-violet-600 hover:underline"
+                  >
+                    contact@lofiwebstudio.pl
                   </a>
                   <p className="text-sm text-gray-600 mt-1">Odpowiadam w ciągu 24h</p>
                 </div>
